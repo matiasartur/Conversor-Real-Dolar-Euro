@@ -1,8 +1,34 @@
 const convertButton = document.querySelector(".convert-button")
 const currencySelect = document.querySelector(".currency-select")
+const input = document.querySelector(".input-currency")
+
+input.addEventListener("input", function (e) {
+    let value = e.target.value
+    value = value.replace(/\D/g, "")
+    value = Number(value) / 100
+    value = value.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    })
+    e.target.value = value
+})
 
 function convertValues() {
-    const inputCurrencyValue = document.querySelector(".input-currency").value
+    let inputCurrencyValue = document.querySelector(".input-currency").value
+
+    inputCurrencyValue = inputCurrencyValue
+    .replace("R$", "")
+    .replace(/\./g, "")
+    .replace(",", ".")
+    .trim()
+
+    inputCurrencyValue = parseFloat(inputCurrencyValue)
+
+    if (isNaN(inputCurrencyValue)) {
+    alert("Digite um valor válido")
+    return
+    }
+
     const valueToConvert = document.querySelector(".currency-value-to-convert")
     const valueConverted = document.querySelector(".currency-value")
 
@@ -20,7 +46,7 @@ function convertValues() {
     }
 
     if (currencySelect.value == "euro") {
-        valueConverted.innerHTML = new Intl.NumberFormat("en-IN", {
+        valueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
             style: "currency",
             currency: "EUR"
         }).format(inputCurrencyValue / euroToday)
@@ -45,8 +71,7 @@ function changeCurrency() {
         currencyName.innerHTML = 'Euro'
         currencyImg.src = './assets/euro.png'
     }
-
-
+    
     convertValues()
 }
 
