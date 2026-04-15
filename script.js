@@ -12,25 +12,43 @@ function convertValues() {
 
 
 
-    if(currencySelect.value == "dolar") { 
+    if (currencySelect.value == "dolar") {
         valueConverted.innerHTML = new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD"
         }).format(inputCurrencyValue / dolarToday)
     }
 
-    if(currencySelect.value == "euro") {
+    if (currencySelect.value == "euro") {
         valueConverted.innerHTML = new Intl.NumberFormat("en-IN", {
             style: "currency",
             currency: "EUR"
-    }).format(inputCurrencyValue / euroToday)
+        }).format(inputCurrencyValue / euroToday)
     }
 
     valueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL"
+        style: "currency",
+        currency: "BRL"
     }).format(inputCurrencyValue)
 
 }
 
+function changeCurrency() {
+    const currencyName = document.getElementById('currency-name')
+    const currencyImg = document.querySelector('.currency-img')
+
+    if (currencySelect.value == "dolar") {
+        currencyName.innerHTML = 'Dólar americano'
+        currencyImg.src = './assets/usa.png'
+    }
+    if (currencySelect.value == "euro") {
+        currencyName.innerHTML = 'Euro'
+        currencyImg.src = './assets/euro.png'
+    }
+
+
+    convertValues()
+}
+
+currencySelect.addEventListener('change', changeCurrency)
 convertButton.addEventListener("click", convertValues)
