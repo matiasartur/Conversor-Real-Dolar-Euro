@@ -23,7 +23,7 @@ main {
     width: 375px;
     border-radius: 20px;
     background-color: #f4f4f4;
-    margin: 0 auto 40px;
+    margin: 0 auto ;
     padding: 44px 24px 23px;
 }
 
@@ -90,7 +90,7 @@ section {
     gap: 4px;
 }
 
-.currency-value {
+.currency-value, .currency-value-to-convert {
     color: #555;
     font-size: 20px;
     font-weight: 700;
