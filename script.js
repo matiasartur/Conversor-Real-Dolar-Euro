@@ -25,9 +25,11 @@ function convertValues() {
     inputCurrencyValue = parseFloat(inputCurrencyValue)
 
     if (isNaN(inputCurrencyValue)) {
-    alert("Digite um valor válido")
-    return
+    if (document.querySelector(".input-currency").value !== "") {
+        alert("Digite um valor válido")
     }
+    return
+}
 
     const valueToConvert = document.querySelector(".currency-value-to-convert")
     const valueConverted = document.querySelector(".currency-value")
