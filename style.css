@@ -9,13 +9,7 @@
 }
 
 body {
-    background: linear-gradient(
-        135deg,
-        #8a51fc 0%,
-        #8a51fc 60%,
-        #cbb4ff 85%,
-        #ffffff 100%
-    );
+    background: #8a51fc;
 }
 
 .logo{
