@@ -98,7 +98,40 @@ function changeCurrency() {
         currencyImg.src = './assets/bitcoin 1.png'
     }
     
+    const valueConverted = document.querySelector(".currency-value")
+    valueConverted.innerHTML = formatCurrency(0, currencySelect.value)
+
     convertValues()
+}
+
+function formatCurrency(value, currency) {
+    if (currency === "dolar") {
+        return new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(value)
+    }
+
+    if (currency === "euro") {
+        return new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR"
+        }).format(value)
+    }
+
+    if (currency === "libra") {
+        return new Intl.NumberFormat("en-GB", {
+            style: "currency",
+            currency: "GBP"
+        }).format(value)
+    }
+
+    if (currency === "bitcoin") {
+        return new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "BTC"
+        }).format(value)
+    }
 }
 
 currencySelect.addEventListener('change', changeCurrency)
